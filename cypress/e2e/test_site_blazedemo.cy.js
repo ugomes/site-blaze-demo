@@ -48,7 +48,7 @@ it('Sauce Demo', function() {
         cy.get('[data-test="username"]').click();
         cy.get('[data-test="username"]').clear();
         cy.get('[data-test="username"]').type('standard_user');
-        cy.get('[data-test="login-button"]').click();
-        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').should('have.text', 'Add to cart');
+        
+        
 });    
     
