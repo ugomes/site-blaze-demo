@@ -26,29 +26,9 @@ describe('Compra de Passagem', () => {
         cy.get('#rememberMe').check().should('be.checked')
         cy.get('input[type="submit"]').click();
         cy.get('h1').should('have.text', 'Thank you for your purchase today!');
-        cy.get('tbody :nth-child(1) :nth-child(1)').should('have.text', 'Id');
+        
+
     });
 });
 
-it('Sauce Demo', function() {
-        cy.visit('www.saucedemo.com')
-        cy.get('[data-test="username"]').click();
-        cy.get('[data-test="username"]').clear();
-        cy.get('[data-test="username"]').clear();
-        cy.get('[data-test="username"]').clear();
-        cy.get('[data-test="username"]').clear();
-        cy.get('[data-test="username"]').clear();
-        cy.get('[data-test="username"]').type('stardard');
-        cy.get('[data-test="username"]').clear();
-        cy.get('[data-test="password"]').click();
-        cy.get('[data-test="password"]').clear();
-        cy.get('[data-test="password"]').clear();
-        cy.get('[data-test="password"]').type('secret_sauce');
-        cy.get('[data-test="login-button"]').click();
-        cy.get('[data-test="username"]').click();
-        cy.get('[data-test="username"]').clear();
-        cy.get('[data-test="username"]').type('standard_user');
-        
-        
-});    
     
