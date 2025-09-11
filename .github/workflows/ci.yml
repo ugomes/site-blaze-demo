@@ -28,7 +28,7 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:3000'
 
-      # Este é o passo crucial para os screenshots.
+      # Este é o passo crucial para os screenshots
       - name: Upload Artifacts (Videos and Screenshots)
         ## A condição #if:always() garante que este passo rode mesmo se o passo
         # 'Cypress run' falhar, permitindo salvar o screenshot do erro.
