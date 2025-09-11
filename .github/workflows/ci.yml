@@ -10,7 +10,7 @@ on:
 
   # Roda em um horário agendado
   schedule:
-    # Roda às 13:00 UTC (10:00 BRT) todos os dias
+    # Roda às 13:00 UTC (10:00 BRT) todos os dias.
     - cron: '0 13 * * *'
 
 jobs:
