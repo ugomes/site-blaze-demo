@@ -1,0 +1,46 @@
+name: Cypress E2E Tests
+
+on:
+  # Roda em Pull Requests para a branch 'main'
+  pull_request:
+    branches: [ main ]
+  
+  # Permite que você rode este workflow manualmente na aba Actions
+  workflow_dispatch:
+
+  # Roda em um horário agendado
+  schedule:
+    # Roda às 13:00 UTC (10:00 BRT) todos os dias
+    - cron: '0 13 * * *'
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Este passo roda os testes. Se algum falhar, o Cypress
+      # automaticamente criará um arquivo de imagem na pasta cypress/screenshots.
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm start
+          wait-on: 'http://localhost:3000'
+
+      # Este é o passo crucial para os screenshots.
+      - name: Upload Artifacts (Videos and Screenshots)
+        ## A condição #if:always() garante que este passo rode mesmo se o passo
+        # 'Cypress run' falhar, permitindo salvar o screenshot do erro.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-artifacts
+          # Aqui especificamos explicitamente que a pasta 'cypress/screenshots'
+          # deve ser incluída no arquivo .zip que será salvo.
+          path: |
+            cypress/videos
+            cypress/screenshots
+          retention-days: 30
+
+        
